@@ -1,0 +1,12 @@
+thứ tự demo : 
+
+
+1. chạy server, chạy 2 client
+2. các thông báo đến người dùng phía server
+3. chọn thư mục cần giám sát cho client1, client2
+4. client1 : tạo một file phía , xóa một file , tạo 1 thư mục , tạo một file trong thư mục đó
+5. chuyển sang client2
+6. tạo một file và thay đổi nội dung cho client2
+7. giữ cửa sổ client2, thay đổi nội dung của client1, chuyển sang cửa sổ client1 và xem kết quả
+8. tắt kết nối client1, thông báo client1 mất kết nối bên phía server
+9. tắt server, client2 thông báo mất kết nối
