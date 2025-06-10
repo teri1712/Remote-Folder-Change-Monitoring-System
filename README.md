@@ -31,8 +31,7 @@ A live version of this project is available at:
    git clone https://github.com/teri1712/Remote-Folder-Change-Monitoring-System.git
    cd Remote-Folder-Change-Monitoring-System
    ```
-2. Configure `pom.xml` with correct package paths for `ClientApp` and `ServerApp`, adjust <mainClass> in pom.xml to
-   corresponding App.
+2. Configure `pom.xml` with correct package paths for `ClientApp` and `ServerApp`.
 3. Run:
    ```bash
    mvn clean package
