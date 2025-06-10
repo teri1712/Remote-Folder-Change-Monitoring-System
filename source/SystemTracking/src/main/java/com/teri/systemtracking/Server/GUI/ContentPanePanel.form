@@ -181,7 +181,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
               <SubComponents>
-                <Component class="com.teri.systemtracking.Server.GUI.ConnectionSessionPanel" name="connectionSessionPanel1">
+                <Component class="com.teri.systemtracking.Server.GUI.BellPanel" name="connectionSessionPanel1">
                   <Properties>
                     <Property name="alignmentY" type="float" value="0.0"/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">

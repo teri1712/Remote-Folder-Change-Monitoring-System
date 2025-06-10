@@ -94,7 +94,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="com.teri.systemtracking.Server.GUI.ObservedActionListPanel" name="observedActionListPanel1">
+        <Component class="com.teri.systemtracking.Server.GUI.EventObservationPanel" name="observedActionListPanel1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="observed events"/>

@@ -5,219 +5,212 @@
 package com.teri.systemtracking.Server.GUI;
 
 import com.jhlabs.image.GaussianFilter;
-import java.awt.AlphaComposite;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.font.TextAttribute;
+
+import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.sql.Date;
-import java.util.Map;
+import java.util.Date;
 
 /**
- *
  * @author MinhTri
  */
 public class NotifyListPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form NotifyPanel
-     */
-    private PopupWindow popup;
-    private BufferedImage vcl;
-    private int total = 0;
+      /**
+       * Creates new form NotifyPanel
+       */
+      private PopupWindow popup;
+      private BufferedImage vcl;
+      private int total = 0;
+      // Variables declaration - do not modify//GEN-BEGIN:variables
+      private javax.swing.Box.Filler filler10;
+      private javax.swing.Box.Filler filler12;
+      private javax.swing.Box.Filler filler7;
+      private javax.swing.Box.Filler filler8;
+      private javax.swing.Box.Filler filler9;
+      private javax.swing.JLabel jLabel1;
+      private javax.swing.JLabel jLabel2;
+      private javax.swing.JPanel jPanel1;
+      private javax.swing.JPanel jPanel2;
+      private javax.swing.JPanel jPanel3;
+      private com.teri.systemtracking.Server.GUI.ListScrollPane listScrollPane1;
 
-    public NotifyListPanel() {
-        initComponents();
-        total = 0;
-        popup = new PopupWindow();
-        listScrollPane1.updateContentComponent(jPanel2);
+      public NotifyListPanel() {
+            initComponents();
+            total = 0;
+            popup = new PopupWindow();
+            listScrollPane1.updateContentComponent(jPanel2);
 
-        BufferedImage mask = new BufferedImage(
-                (int) getPreferredSize().getWidth(), (int) getPreferredSize().getHeight(), BufferedImage.TYPE_INT_ARGB);
+            BufferedImage mask = new BufferedImage(
+                  (int) getPreferredSize().getWidth(), (int) getPreferredSize().getHeight(), BufferedImage.TYPE_INT_ARGB);
 
-        Graphics2D m = mask.createGraphics();
-        applyQualityProperties(m);
+            Graphics2D m = mask.createGraphics();
+            applyQualityProperties(m);
 
-        m.setColor(Color.BLACK);
-        m.fillRoundRect(10, 10, (int) getPreferredSize().getWidth() - 20,
-                (int) getPreferredSize().getHeight() - 20, 8, 8);
+            m.setColor(Color.BLACK);
+            m.fillRoundRect(10, 10, (int) getPreferredSize().getWidth() - 20,
+                  (int) getPreferredSize().getHeight() - 20, 8, 8);
 
-        m.dispose();
+            m.dispose();
 
-        vcl = new BufferedImage((int) getPreferredSize().getWidth(),
-                (int) getPreferredSize().getHeight(), BufferedImage.TYPE_INT_ARGB);
+            vcl = new BufferedImage((int) getPreferredSize().getWidth(),
+                  (int) getPreferredSize().getHeight(), BufferedImage.TYPE_INT_ARGB);
 
-        Graphics2D cc = vcl.createGraphics();
-        applyQualityProperties(cc);
+            Graphics2D cc = vcl.createGraphics();
+            applyQualityProperties(cc);
 
-        cc.drawImage(mask, 0, 0, null);
+            cc.drawImage(mask, 0, 0, null);
 
-        cc.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_IN, 0.1f));
+            cc.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_IN, 0.1f));
 
-        cc.setColor(Color.BLACK);
-        cc.fillRoundRect(10, 10,
-                (int) getPreferredSize().getWidth() - 20, (int) getPreferredSize().getHeight() - 20, 8, 8);
-        cc.dispose();
+            cc.setColor(Color.BLACK);
+            cc.fillRoundRect(10, 10,
+                  (int) getPreferredSize().getWidth() - 20, (int) getPreferredSize().getHeight() - 20, 8, 8);
+            cc.dispose();
 
-        GaussianFilter gg = new GaussianFilter(10);
-        vcl = gg.filter(vcl, null);
-        vcl = gg.filter(vcl, null);
-        vcl = gg.filter(vcl, null);
+            GaussianFilter gg = new GaussianFilter(10);
+            vcl = gg.filter(vcl, null);
+            vcl = gg.filter(vcl, null);
+            vcl = gg.filter(vcl, null);
 
-        jLabel2.setForeground(Color.decode("#006494"));
-    }
+            jLabel2.setForeground(Color.decode("#006494"));
+      }
 
-    public static void applyQualityProperties(Graphics2D g2) {
-        g2.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
-        g2.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
-        g2.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
-        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
+      public static void applyQualityProperties(Graphics2D g2) {
+            g2.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g2.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
+            g2.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
+            g2.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+            g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+            g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+            g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
 
-    }
+      }
 
-    public PopupWindow getPopupWindow() {
-        return popup;
-    }
+      public PopupWindow getPopupWindow() {
+            return popup;
+      }
 
-    public void updateAnnouncement(String content, Date date) {
-        NotifyEntityPanel pnl = new NotifyEntityPanel();
-        pnl.setContent(content, date);
-        total++;
-        jLabel2.setText("Total : " + Integer.toString(total));
-        jPanel2.add(pnl, 0);
-        jPanel2.revalidate();
-        jPanel2.repaint();
-    }
+      public void updateAnnouncement(String content, Date date) {
+            NotifyEntityPanel pnl = new NotifyEntityPanel();
+            pnl.setContent(content, date);
+            total++;
+            jLabel2.setText("Total : " + Integer.toString(total));
+            jPanel2.add(pnl, 0);
+            jPanel2.revalidate();
+            jPanel2.repaint();
+      }
 
-    @Override
-    public void paintComponent(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g.create();
-        applyQualityProperties(g2);
+      @Override
+      public void paintComponent(Graphics g) {
+            Graphics2D g2 = (Graphics2D) g.create();
+            applyQualityProperties(g2);
 
-        g2.drawImage(vcl, 0, 0, null);
+            g2.drawImage(vcl, 0, 0, null);
 
-        g2.setColor(Color.WHITE);
-        g2.fillRoundRect(10, 10, getWidth() - 20, getHeight() - 20, 10, 10);
-        g2.dispose();
+            g2.setColor(Color.WHITE);
+            g2.fillRoundRect(10, 10, getWidth() - 20, getHeight() - 20, 10, 10);
+            g2.dispose();
 
-        super.paintComponent(g);
+            super.paintComponent(g);
 
-    }
+      }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+      /**
+       * This method is called from within the constructor to initialize the form.
+       * WARNING: Do NOT modify this code. The content of this method is always
+       * regenerated by the Form Editor.
+       */
+      @SuppressWarnings("unchecked")
+      // <editor-fold defaultstate="collapsed" desc="Generated
+      // <editor-fold defaultstate="collapsed" desc="Generated
+      // <editor-fold defaultstate="collapsed" desc="Generated
+      // <editor-fold defaultstate="collapsed" desc="Generated
+      // <editor-fold defaultstate="collapsed" desc="Generated
+      // <editor-fold defaultstate="collapsed" desc="Generated
+      // <editor-fold defaultstate="collapsed" desc="Generated
+      // <editor-fold defaultstate="collapsed" desc="Generated
+      // <editor-fold defaultstate="collapsed" desc="Generated
+      // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+      private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 25), new java.awt.Dimension(30, 25), new java.awt.Dimension(30, 25));
-        jPanel3 = new javax.swing.JPanel();
-        filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 30), new java.awt.Dimension(30, 30), new java.awt.Dimension(30, 30));
-        jLabel1 = new javax.swing.JLabel();
-        filler10 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 30), new java.awt.Dimension(150, 30), new java.awt.Dimension(150, 30));
-        jLabel2 = new javax.swing.JLabel();
-        filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 13), new java.awt.Dimension(30, 13), new java.awt.Dimension(30, 13));
-        listScrollPane1 = new com.teri.systemtracking.Server.GUI.ListScrollPane();
-        filler12 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 25), new java.awt.Dimension(30, 25), new java.awt.Dimension(30, 25));
+            jPanel2 = new javax.swing.JPanel();
+            jPanel1 = new javax.swing.JPanel();
+            filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 25), new java.awt.Dimension(30, 25), new java.awt.Dimension(30, 25));
+            jPanel3 = new javax.swing.JPanel();
+            filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 30), new java.awt.Dimension(30, 30), new java.awt.Dimension(30, 30));
+            jLabel1 = new javax.swing.JLabel();
+            filler10 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 30), new java.awt.Dimension(150, 30), new java.awt.Dimension(150, 30));
+            jLabel2 = new javax.swing.JLabel();
+            filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 13), new java.awt.Dimension(30, 13), new java.awt.Dimension(30, 13));
+            listScrollPane1 = new com.teri.systemtracking.Server.GUI.ListScrollPane();
+            filler12 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 25), new java.awt.Dimension(30, 25), new java.awt.Dimension(30, 25));
 
-        jPanel2.setMaximumSize(new java.awt.Dimension(300000, 300000));
-        jPanel2.setOpaque(false);
-        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
+            jPanel2.setMaximumSize(new java.awt.Dimension(300000, 300000));
+            jPanel2.setOpaque(false);
+            jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
 
-        setMinimumSize(new java.awt.Dimension(360, 400));
-        setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(360, 600));
-        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
+            setMinimumSize(new java.awt.Dimension(360, 400));
+            setOpaque(false);
+            setPreferredSize(new java.awt.Dimension(360, 600));
+            setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
-        jPanel1.setAlignmentX(0.0F);
-        jPanel1.setAlignmentY(0.0F);
-        jPanel1.setMaximumSize(new java.awt.Dimension(30000, 30000));
-        jPanel1.setMinimumSize(new java.awt.Dimension(360, 500));
-        jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(360, 500));
-        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
+            jPanel1.setAlignmentX(0.0F);
+            jPanel1.setAlignmentY(0.0F);
+            jPanel1.setMaximumSize(new java.awt.Dimension(30000, 30000));
+            jPanel1.setMinimumSize(new java.awt.Dimension(360, 500));
+            jPanel1.setOpaque(false);
+            jPanel1.setPreferredSize(new java.awt.Dimension(360, 500));
+            jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
 
-        filler7.setAlignmentX(0.0F);
-        jPanel1.add(filler7);
+            filler7.setAlignmentX(0.0F);
+            jPanel1.add(filler7);
 
-        jPanel3.setAlignmentX(0.0F);
-        jPanel3.setMaximumSize(new java.awt.Dimension(32767, 20));
-        jPanel3.setMinimumSize(new java.awt.Dimension(10, 20));
-        jPanel3.setOpaque(false);
-        jPanel3.setPreferredSize(new java.awt.Dimension(100, 20));
-        jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.LINE_AXIS));
+            jPanel3.setAlignmentX(0.0F);
+            jPanel3.setMaximumSize(new java.awt.Dimension(32767, 20));
+            jPanel3.setMinimumSize(new java.awt.Dimension(10, 20));
+            jPanel3.setOpaque(false);
+            jPanel3.setPreferredSize(new java.awt.Dimension(100, 20));
+            jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.LINE_AXIS));
 
-        filler8.setAlignmentX(0.0F);
-        jPanel3.add(filler8);
+            filler8.setAlignmentX(0.0F);
+            jPanel3.add(filler8);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Variable", 0, 18)); // NOI18N
-        jLabel1.setText("Notifications");
-        jPanel3.add(jLabel1);
+            jLabel1.setFont(new java.awt.Font("Segoe UI Variable", 0, 18)); // NOI18N
+            jLabel1.setText("Notifications");
+            jPanel3.add(jLabel1);
 
-        filler10.setAlignmentX(0.0F);
-        jPanel3.add(filler10);
+            filler10.setAlignmentX(0.0F);
+            jPanel3.add(filler10);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(100,100,100)
-        );
-        jLabel2.setText("Total : 0");
-        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel2.setMaximumSize(new java.awt.Dimension(100, 21));
-        jLabel2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel3.add(jLabel2);
+            jLabel2.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
+            jLabel2.setForeground(new java.awt.Color(100, 100, 100)
+            );
+            jLabel2.setText("Total : 0");
+            jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+            jLabel2.setMaximumSize(new java.awt.Dimension(100, 21));
+            jLabel2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+            jPanel3.add(jLabel2);
 
-        jPanel1.add(jPanel3);
+            jPanel1.add(jPanel3);
 
-        filler9.setAlignmentX(0.0F);
-        jPanel1.add(filler9);
+            filler9.setAlignmentX(0.0F);
+            jPanel1.add(filler9);
 
-        listScrollPane1.setBorder(null);
-        listScrollPane1.setAlignmentX(0.0F);
-        listScrollPane1.setMaximumSize(new java.awt.Dimension(345, 32767));
-        listScrollPane1.setOpaque(false);
-        jPanel1.add(listScrollPane1);
+            listScrollPane1.setBorder(null);
+            listScrollPane1.setAlignmentX(0.0F);
+            listScrollPane1.setMaximumSize(new java.awt.Dimension(345, 32767));
+            listScrollPane1.setOpaque(false);
+            jPanel1.add(listScrollPane1);
 
-        filler12.setAlignmentX(0.0F);
-        jPanel1.add(filler12);
+            filler12.setAlignmentX(0.0F);
+            jPanel1.add(filler12);
 
-        add(jPanel1);
-    }// </editor-fold>//GEN-END:initComponents
+            add(jPanel1);
+      }// </editor-fold>//GEN-END:initComponents
 
-    private void ovalButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ovalButton1ActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_ovalButton1ActionPerformed
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.Box.Filler filler10;
-    private javax.swing.Box.Filler filler12;
-    private javax.swing.Box.Filler filler7;
-    private javax.swing.Box.Filler filler8;
-    private javax.swing.Box.Filler filler9;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private com.teri.systemtracking.Server.GUI.ListScrollPane listScrollPane1;
-    // End of variables declaration//GEN-END:variables
+      private void ovalButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ovalButton1ActionPerformed
+            // TODO add your handling code here:
+      }// GEN-LAST:event_ovalButton1ActionPerformed
+      // End of variables declaration//GEN-END:variables
 }

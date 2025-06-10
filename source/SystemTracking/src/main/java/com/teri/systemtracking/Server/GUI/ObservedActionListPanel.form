@@ -90,7 +90,7 @@
           <SubComponents>
             <Component class="com.teri.systemtracking.Server.GUI.SearchBar" name="searchBar2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="search by date"/>
+                <Property name="text" type="java.lang.String" value="search by date (yyyy-MM-dd)"/>
               </Properties>
             </Component>
             <Component class="com.teri.systemtracking.Server.GUI.OvalButton" name="showAllButton">

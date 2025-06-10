@@ -4,141 +4,137 @@
  */
 package com.teri.systemtracking.Server.GUI;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+import com.teri.systemtracking.Server.presenter.DrivePresenter;
+
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.RepaintManager;
-
-import com.teri.systemtracking.Server.ClientWorker.Client;
-
 /**
- *
  * @author MinhTri
  */
 public class DriveEntityPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form ActiveUserEntityPanel
-     */
-    private Color cl;
-    private Color normal;
-    private Color enter;
-    private Color press;
-    private boolean isActive;
+      private DrivePresenter presenter;
+      private Color cl;
+      private Color normal;
+      private Color enter;
+      private Color press;
+      private boolean isActive;
 
-    public DriveEntityPanel() {
-        initComponents();
-        isActive = false;
-        this.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        normal = new Color(0x8e, 0xca, 0xe6, 60);
-        enter = new Color(0x8e, 0xca, 0xe6, 100);
-        press = new Color(0x8e, 0xca, 0xe6, 150);
-        cl = normal;
-        addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                cl = enter;
-                repaint();
-            }
+      public DriveEntityPanel() {
+            initComponents();
+            isActive = false;
+            this.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            normal = new Color(0x8e, 0xca, 0xe6, 60);
+            enter = new Color(0x8e, 0xca, 0xe6, 100);
+            press = new Color(0x8e, 0xca, 0xe6, 150);
+            cl = normal;
+            addMouseListener(new MouseAdapter() {
+                  @Override
+                  public void mouseEntered(MouseEvent e) {
+                        cl = enter;
+                        repaint();
+                  }
 
-            @Override
-            public void mouseExited(MouseEvent e) {
-                cl = normal;
-                repaint();
-            }
+                  @Override
+                  public void mouseExited(MouseEvent e) {
+                        cl = normal;
+                        repaint();
+                  }
 
-            @Override
-            public void mousePressed(MouseEvent e) {
-                cl = press;
-                repaint();
-            }
+                  @Override
+                  public void mousePressed(MouseEvent e) {
+                        cl = press;
+                        repaint();
+                  }
 
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                cl = enter;
-                repaint();
-            }
-        });
-    }
+                  @Override
+                  public void mouseReleased(MouseEvent e) {
+                        cl = enter;
+                        repaint();
+                  }
+            });
+            addMouseListener(new MouseAdapter() {
+                  @Override
+                  public void mouseClicked(MouseEvent e) {
+                        requestFocusInWindow();
+                        if (presenter != null) {
+                              presenter.navigateToDrive();
+                        }
+                  }
 
-    public void setIsActive(boolean isActive) {
-        this.isActive = isActive;
+            });
+      }
 
-        repaint();
-    }
 
-    public void setCommands(final String name, final Client client) {
-        jLabel1.setText(name);
-        addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                try {
-                    requestFocusInWindow();
-                    client.setSelectedDrive(name, DriveEntityPanel.this);
-                } catch (InterruptedException e1) {
-                    e1.printStackTrace();
-                }
-            }
+      public void setIsActive(boolean isActive) {
+            this.isActive = isActive;
 
-        });
-    }
+            repaint();
+      }
 
-    @Override
-    public void paintComponent(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g.create();
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
-        if (isActive) {
-            g2.setColor(enter);
-            jLabel1.setForeground(Color.decode("#0077b6"));
-        } else {
-            g2.setColor(cl);
-            if (cl == enter) {
-                jLabel1.setForeground(Color.decode("#0077b6"));
+      public void setPresenter(DrivePresenter presenter) {
+            this.presenter = presenter;
+      }
+
+      public void initView(String name) {
+            driveLabel.setText(name);
+      }
+
+
+      @Override
+      public void paintComponent(Graphics g) {
+            Graphics2D g2 = (Graphics2D) g.create();
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                  RenderingHints.VALUE_ANTIALIAS_ON);
+            if (isActive) {
+                  g2.setColor(enter);
+                  driveLabel.setForeground(Color.decode("#0077b6"));
             } else {
-                jLabel1.setForeground(Color.BLACK);
+                  g2.setColor(cl);
+                  if (cl == enter) {
+                        driveLabel.setForeground(Color.decode("#0077b6"));
+                  } else {
+                        driveLabel.setForeground(Color.BLACK);
+                  }
             }
-        }
-        g2.fillRoundRect(0, 1, getWidth(), getHeight() - 2, 5, 5);
-        g2.dispose();
-        super.paintComponent(g);
-    }
+            g2.fillRoundRect(0, 1, getWidth(), getHeight() - 2, 5, 5);
+            g2.dispose();
+            super.paintComponent(g);
+      }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+      /**
+       * This method is called from within the constructor to initialize the form.
+       * WARNING: Do NOT modify this code. The content of this method is always
+       * regenerated by the Form Editor.
+       */
+      @SuppressWarnings("unchecked")
+      // <editor-fold defaultstate="collapsed" desc="Generated
+      // <editor-fold defaultstate="collapsed" desc="Generated
+      // <editor-fold defaultstate="collapsed" desc="Generated
+      // Code">//GEN-BEGIN:initComponents
+      private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+            driveLabel = new javax.swing.JLabel();
 
-        setAlignmentY(0.0F);
-        setMaximumSize(new java.awt.Dimension(280, 40));
-        setMinimumSize(new java.awt.Dimension(280, 200));
-        setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(280, 40));
-        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
+            setAlignmentY(0.0F);
+            setMaximumSize(new java.awt.Dimension(280, 40));
+            setMinimumSize(new java.awt.Dimension(280, 200));
+            setOpaque(false);
+            setPreferredSize(new java.awt.Dimension(280, 40));
+            setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Variable", 0, 17)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drive.png"))); // NOI18N
-        jLabel1.setText("D:\\");
-        jLabel1.setIconTextGap(8);
-        jLabel1.setMaximumSize(new java.awt.Dimension(65, 40));
-        add(jLabel1);
-    }// </editor-fold>//GEN-END:initComponents
+            driveLabel.setFont(new java.awt.Font("Segoe UI Variable", 0, 17)); // NOI18N
+            driveLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+            driveLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drive.png"))); // NOI18N
+            driveLabel.setText("D:\\");
+            driveLabel.setIconTextGap(8);
+            driveLabel.setMaximumSize(new java.awt.Dimension(65, 40));
+            add(driveLabel);
+      }// </editor-fold>//GEN-END:initComponents
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    // End of variables declaration//GEN-END:variables
+      // Variables declaration - do not modify//GEN-BEGIN:variables
+      private javax.swing.JLabel driveLabel;
+      // End of variables declaration//GEN-END:variables
 }

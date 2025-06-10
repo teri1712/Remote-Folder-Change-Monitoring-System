@@ -4,168 +4,163 @@
  */
 package com.teri.systemtracking.Server.GUI;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
- *
  * @author MinhTri
  */
 public class NotifyEntityPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form NotifyPanel
-     */
-    private Color cl;
-    private Color normal;
-    private Color enter;
-    private Color press;
+      /**
+       * Creates new form NotifyPanel
+       */
+      private Color cl;
+      private Color normal;
+      private Color enter;
+      private Color press;
+      // Variables declaration - do not modify//GEN-BEGIN:variables
+      private javax.swing.Box.Filler filler7;
+      private javax.swing.Box.Filler filler8;
+      private javax.swing.Box.Filler filler9;
+      private javax.swing.JLabel jLabel5;
+      private javax.swing.JLabel jLabel6;
+      private javax.swing.JPanel jPanel1;
+      private javax.swing.JPanel jPanel2;
 
-    public NotifyEntityPanel() {
-        normal = new Color(0, 0, 0, 0);
-        enter = new Color(0, 0, 0, 10);
-        press = new Color(0, 0, 0, 20);
-        cl = normal;
+      public NotifyEntityPanel() {
+            normal = new Color(0, 0, 0, 0);
+            enter = new Color(0, 0, 0, 10);
+            press = new Color(0, 0, 0, 20);
+            cl = normal;
 
-        initComponents();
-        addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                cl = enter;
-                repaint();
-            }
+            initComponents();
+            addMouseListener(new MouseAdapter() {
+                  @Override
+                  public void mouseEntered(MouseEvent e) {
+                        cl = enter;
+                        repaint();
+                  }
 
-            @Override
-            public void mouseExited(MouseEvent e) {
-                cl = normal;
-                repaint();
-            }
+                  @Override
+                  public void mouseExited(MouseEvent e) {
+                        cl = normal;
+                        repaint();
+                  }
 
-            @Override
-            public void mousePressed(MouseEvent e) {
-                cl = press;
-                repaint();
-            }
+                  @Override
+                  public void mousePressed(MouseEvent e) {
+                        cl = press;
+                        repaint();
+                  }
 
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                cl = enter;
-                repaint();
-            }
-        });
-    }
+                  @Override
+                  public void mouseReleased(MouseEvent e) {
+                        cl = enter;
+                        repaint();
+                  }
+            });
+      }
 
-    public void setContent(String content, Date date) {
-        jLabel5.setText(content);
+      public void setContent(String content, Date date) {
+            jLabel5.setText(content);
 
-        SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm:ss");
-        String time = localDateFormat.format(date);
-        String d = time + " " + date.toString();
-        jLabel6.setText(d);
+            SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm:ss");
+            String time = localDateFormat.format(date);
+            String d = time + " " + date.toString();
+            jLabel6.setText(d);
 
-    }
+      }
 
-    @Override
-    public void paintComponent(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g.create();
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.setColor(cl);
-        g2.fillRoundRect(18, 0, getWidth() - 36, getHeight() - 3, 10, 10);
+      @Override
+      public void paintComponent(Graphics g) {
+            Graphics2D g2 = (Graphics2D) g.create();
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                  RenderingHints.VALUE_ANTIALIAS_ON);
+            g2.setColor(cl);
+            g2.fillRoundRect(18, 0, getWidth() - 36, getHeight() - 3, 10, 10);
 
-        g2.setColor(Color.decode("#0582ca"));
+            g2.setColor(Color.decode("#0582ca"));
 
-        g2.fillOval(30, 25, 10, 10);
+            g2.fillOval(30, 25, 10, 10);
 
-        g2.setColor(press);
-        g2.fillRect(25, getHeight() - 1, getWidth() - 50, 1);
-        g2.dispose();
-        super.paintComponent(g);
-    }
+            g2.setColor(press);
+            g2.fillRect(25, getHeight() - 1, getWidth() - 50, 1);
+            g2.dispose();
+            super.paintComponent(g);
+      }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+      /**
+       * This method is called from within the constructor to initialize the form.
+       * WARNING: Do NOT modify this code. The content of this method is always
+       * regenerated by the Form Editor.
+       */
+      @SuppressWarnings("unchecked")
+      // <editor-fold defaultstate="collapsed" desc="Generated
+      // <editor-fold defaultstate="collapsed" desc="Generated
+      // <editor-fold defaultstate="collapsed" desc="Generated
+      // <editor-fold defaultstate="collapsed" desc="Generated
+      // <editor-fold defaultstate="collapsed" desc="Generated
+      // <editor-fold defaultstate="collapsed" desc="Generated
+      // <editor-fold defaultstate="collapsed" desc="Generated
+      // <editor-fold defaultstate="collapsed" desc="Generated
+      // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+      private void initComponents() {
 
-        filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 15), new java.awt.Dimension(30, 12), new java.awt.Dimension(30, 12));
-        jPanel2 = new javax.swing.JPanel();
-        filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 15), new java.awt.Dimension(50, 12), new java.awt.Dimension(50, 12));
-        jPanel1 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 15), new java.awt.Dimension(30, 12), new java.awt.Dimension(30, 12));
+            filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 15), new java.awt.Dimension(30, 12), new java.awt.Dimension(30, 12));
+            jPanel2 = new javax.swing.JPanel();
+            filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 15), new java.awt.Dimension(50, 12), new java.awt.Dimension(50, 12));
+            jPanel1 = new javax.swing.JPanel();
+            jLabel5 = new javax.swing.JLabel();
+            jLabel6 = new javax.swing.JLabel();
+            filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 15), new java.awt.Dimension(30, 12), new java.awt.Dimension(30, 12));
 
-        setMaximumSize(new java.awt.Dimension(360, 85));
-        setMinimumSize(new java.awt.Dimension(360, 85));
-        setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(360, 85));
-        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
+            setMaximumSize(new java.awt.Dimension(360, 85));
+            setMinimumSize(new java.awt.Dimension(360, 85));
+            setOpaque(false);
+            setPreferredSize(new java.awt.Dimension(360, 85));
+            setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
 
-        filler7.setAlignmentX(0.0F);
-        add(filler7);
+            filler7.setAlignmentX(0.0F);
+            add(filler7);
 
-        jPanel2.setAlignmentX(0.0F);
-        jPanel2.setMaximumSize(new java.awt.Dimension(30000, 30000));
-        jPanel2.setOpaque(false);
-        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.LINE_AXIS));
+            jPanel2.setAlignmentX(0.0F);
+            jPanel2.setMaximumSize(new java.awt.Dimension(30000, 30000));
+            jPanel2.setOpaque(false);
+            jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.LINE_AXIS));
 
-        filler9.setAlignmentX(0.0F);
-        jPanel2.add(filler9);
+            filler9.setAlignmentX(0.0F);
+            jPanel2.add(filler9);
 
-        jPanel1.setMaximumSize(new java.awt.Dimension(300, 30000));
-        jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(300, 100));
-        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
+            jPanel1.setMaximumSize(new java.awt.Dimension(300, 30000));
+            jPanel1.setOpaque(false);
+            jPanel1.setPreferredSize(new java.awt.Dimension(300, 100));
+            jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI Variable", 0, 16)); // NOI18N
-        jLabel5.setText("Client#1 has been disconnected");
-        jLabel5.setMaximumSize(new java.awt.Dimension(330, 50));
-        jPanel1.add(jLabel5);
+            jLabel5.setFont(new java.awt.Font("Segoe UI Variable", 0, 16)); // NOI18N
+            jLabel5.setText("Client#1 has been disconnected");
+            jLabel5.setMaximumSize(new java.awt.Dimension(330, 50));
+            jPanel1.add(jLabel5);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(100,100,100));
-        jLabel6.setText("17-12-2023 00:00:00");
-        jLabel6.setMaximumSize(new java.awt.Dimension(330, 50));
-        jPanel1.add(jLabel6);
+            jLabel6.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
+            jLabel6.setForeground(new java.awt.Color(100, 100, 100));
+            jLabel6.setText("17-12-2023 00:00:00");
+            jLabel6.setMaximumSize(new java.awt.Dimension(330, 50));
+            jPanel1.add(jLabel6);
 
-        jPanel2.add(jPanel1);
+            jPanel2.add(jPanel1);
 
-        add(jPanel2);
+            add(jPanel2);
 
-        filler8.setAlignmentX(0.0F);
-        add(filler8);
-    }// </editor-fold>//GEN-END:initComponents
+            filler8.setAlignmentX(0.0F);
+            add(filler8);
+      }// </editor-fold>//GEN-END:initComponents
 
-    private void ovalButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ovalButton1ActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_ovalButton1ActionPerformed
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.Box.Filler filler7;
-    private javax.swing.Box.Filler filler8;
-    private javax.swing.Box.Filler filler9;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    // End of variables declaration//GEN-END:variables
+      private void ovalButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ovalButton1ActionPerformed
+            // TODO add your handling code here:
+      }// GEN-LAST:event_ovalButton1ActionPerformed
+      // End of variables declaration//GEN-END:variables
 }
