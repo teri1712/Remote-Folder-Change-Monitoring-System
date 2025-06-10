@@ -68,11 +68,12 @@ public class Server implements ClientRepository {
                                           clientChannel.configureBlocking(false);
                                           countConnections++;
                                           Client client = new Client(countConnections, new Date(System.currentTimeMillis()));
-                                          SelectionKey clientKey = clientChannel.register(selector, SelectionKey.OP_READ, client);
+                                          SelectionKey clientKey = clientChannel.register(selector, SelectionKey.OP_READ | SelectionKey.OP_WRITE, client);
                                           ClientSession session = new ClientSession(clientKey, client, offloadTaskExecutor);
                                           sessions.put(client.getId(), session);
                                     }
-                              } else if (key.isReadable()) {
+                              }
+                              if (key.isReadable()) {
                                     SocketChannel clientChannel = (SocketChannel) key.channel();
                                     ClientSession session = sessions.get(((Client) key.attachment()).getId());
                                     ByteBuffer readBuffer = session.getReadBuffer();
@@ -112,7 +113,8 @@ public class Server implements ClientRepository {
                                     }
 
 //                                    key.interestOps(SelectionKey.OP_WRITE);
-                              } else if (key.isWritable()) {
+                              }
+                              if (key.isWritable()) {
                                     SocketChannel client = (SocketChannel) key.channel();
                                     ClientSession session = sessions.get(((Client) key.attachment()).getId());
                                     ByteBuffer writeBuffer = session.getWriteBuffer();
@@ -120,7 +122,7 @@ public class Server implements ClientRepository {
                                           continue;
                                     }
                                     if (!writeBuffer.hasRemaining()) {
-                                          key.interestOps(SelectionKey.OP_READ);
+//                                          key.interestOps(SelectionKey.OP_READ);
                                           continue;
                                     }
                                     client.write(writeBuffer);

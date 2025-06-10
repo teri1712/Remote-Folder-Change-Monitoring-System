@@ -17,14 +17,16 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executor;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class ClientSession implements MessageSender, MessageReceiver {
 
       private static final int BUFFER_CAPACITY = 4096;
       private final ByteBuffer readBuffer = ByteBuffer.allocate(BUFFER_CAPACITY);
-      private ByteBuffer writeBuffer = null;
+      private final BlockingQueue<ByteBuffer> writeBufferQueue = new LinkedBlockingQueue<>();
 
       private final SelectionKey key;
       private final Client client;
@@ -51,8 +53,8 @@ public class ClientSession implements MessageSender, MessageReceiver {
             return readBuffer;
       }
 
-      synchronized ByteBuffer getWriteBuffer() {
-            return writeBuffer;
+      ByteBuffer getWriteBuffer() {
+            return writeBufferQueue.poll();
       }
 
       private synchronized void setByteBuffer(byte[] payload) {
@@ -60,9 +62,7 @@ public class ClientSession implements MessageSender, MessageReceiver {
             writeBuffer.putInt(payload.length);
             writeBuffer.put(payload);
             writeBuffer.flip();
-            key.interestOps(SelectionKey.OP_WRITE);
-            key.selector().wakeup();
-            this.writeBuffer = writeBuffer;
+            writeBufferQueue.offer(writeBuffer);
       }
 
       @Override
