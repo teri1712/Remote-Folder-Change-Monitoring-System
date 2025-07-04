@@ -16,8 +16,8 @@ import io.reactivex.rxjava3.subjects.Subject;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.util.Map;
+import java.util.Queue;
 import java.util.UUID;
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executor;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -26,7 +26,7 @@ public class ClientSession implements MessageSender, MessageReceiver {
 
       private static final int BUFFER_CAPACITY = 4096;
       private final ByteBuffer readBuffer = ByteBuffer.allocate(BUFFER_CAPACITY);
-      private final BlockingQueue<ByteBuffer> writeBufferQueue = new LinkedBlockingQueue<>();
+      private final Queue<ByteBuffer> writeBufferQueue = new LinkedBlockingQueue<>();
 
       private final SelectionKey key;
       private final Client client;
@@ -54,7 +54,12 @@ public class ClientSession implements MessageSender, MessageReceiver {
       }
 
       ByteBuffer getWriteBuffer() {
-            return writeBufferQueue.poll();
+            ByteBuffer writeBuffer = writeBufferQueue.peek();
+            if (writeBuffer != null && !writeBuffer.hasRemaining()) {
+                  writeBufferQueue.poll();
+                  writeBuffer = writeBufferQueue.peek();
+            }
+            return writeBuffer;
       }
 
       private synchronized void setByteBuffer(byte[] payload) {
